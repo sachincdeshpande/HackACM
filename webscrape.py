@@ -1,7 +1,8 @@
 from bs4 import BeautifulSoup
 import requests
 import re
-def getNineTenMeals():
+
+def get_teacher_reviews():
 
 	page_link = "http://www.ratemyprofessors.com/ShowRatings.jsp?tid=144099"
 
@@ -9,31 +10,59 @@ def getNineTenMeals():
 
 	page_content = BeautifulSoup(page_response.content, "html.parser")
 
-	textcontent = []
-	breakfastList = []
-	lunchList = []
-	dinnerList = []
-	lateNightList = []
+	# list used to hold the reviews of a teacher
+	teacher_reviews = []
+	# list to hold calculated elements on ratemyprofessor
+	"""
+			teacher_atts[0] = overall quality
+			teacher_atts[1] = % would take again
+			teacher_atts[2] = level of difficulty
+	"""
+	teacher_attributes = []
 
-	lateNightHappening = False
+	# find reviews and teacher attributes on page
+	all_reviews = page_content.find_all("p", attrs={'class': "commentsParagraph"})
+	attributes = page_content.find_all("div", attrs={'class': "grade"})
 
-	htmlMeals = page_content.find_all("div", attrs={'class': "commentsParagraph"})
-	print(htmlMeals)
+	for i in range(len(all_reviews)):
+	    teacher_reviews.append(all_reviews[i].text)
 
-	for i in range(len(htmlMeals)):
-	    textcontent.append(htmlMeals[i].text)
-	print(textcontent)
+	for i in range(len(attributes)):
+	    teacher_attributes.append(attributes[i].text)
 
-	#------
-	htmlMeals = page_content.find_all('td', attrs={'valign': 'top'})
+	# get rid of unnecessary spaces in  (newline, etc)
+	for i in range(0, len(teacher_reviews)):
+		current_review = teacher_reviews[i]
+		review_no_front_space = re.sub(r'^\W*', '', current_review)
+		review_no_space = re.sub(r'\s*$', '', review_no_front_space)
+		teacher_reviews[i] = review_no_space
+
+	# get rid of unnecessary spaces in teacher_attributes (newline, etc)
+	for i in range(0, len(teacher_attributes)):
+		current_attribute = teacher_attributes[i]
+		attribute_no_front_space = re.sub(r'^\W*', '', current_attribute)
+		attribute_no_space = re.sub(r'\s*$', '', attribute_no_front_space)
+		teacher_attributes[i] = attribute_no_space
+
+	print("REVS", teacher_reviews)
+	print("ATTS", teacher_attributes)
+	"""
+		teacher_atts[0] = overall quality
+		teacher_atts[1] = % would take again
+		teacher_atts[2] = level of difficulty
+	"""
+
+
+	all_reviews = page_content.find_all('td', attrs={'valign': 'top'})
 	meals = ''
+	
 
-	for i in range(0, len(htmlMeals)):
-		meals = meals + htmlMeals[i].text
+	for i in range(0, len(all_reviews)):
+		meals = meals + all_reviews[i].text
 
 	if len(meals) == 0:
 		return
-
+	"""
 	b = meals.split("Lunch")
 	breakfast = b[0]
 	l = b[1].split("Dinner")
@@ -51,20 +80,20 @@ def getNineTenMeals():
 	if lateNightHappening:
 	    lateNight = re.sub(r'\W+', ' ', lateNight)
 
-	for s in textcontent:
+	for s in teacher_reviews:
 	    if s in breakfast and s not in breakfastList:
 	        breakfastList.append(s)
 
-	for s in textcontent:
+	for s in teacher_reviews:
 	    if s in lunch and s not in lunchList:
 	        lunchList.append(s)
 
-	for s in textcontent:
+	for s in teacher_reviews:
 	    if s in dinner and s not in dinnerList:
 	        dinnerList.append(s)
 
 	if lateNightHappening:
-	    for s in textcontent:
+	    for s in teacher_reviews:
 	        if s in lateNight and s not in lateNightList:
 	            lateNightList.append(s)
 
@@ -117,7 +146,7 @@ def getNineTenMeals():
 		filenames = ['NineTenbreakfast.txt', 'NineTenlunch.txt', 'NineTendinner.txt']
 	else:
 		filenames = ['NineTenbreakfast.txt', 'NineTenlunch.txt', 'NineTendinner.txt', 'NineTenlateNight.txt']
+	"""
 
 
-
-getNineTenMeals()
+get_teacher_reviews()
