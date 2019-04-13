@@ -1,9 +1,8 @@
 from bs4 import BeautifulSoup
-import requests
-import re
-import requests
-import json
-import math
+import re, requests, json, math, cgi
+
+form = cgi.FieldStorage()
+searchterm = form.getvalue('searchbox')
 
 class RateMyProfScraper:
         def __init__(self,schoolid):
@@ -106,115 +105,13 @@ def get_teacher_reviews(professor_id):
 
     print("REVS", teacher_reviews)
     print("ATTS", teacher_attributes)
-    """
-        teacher_atts[0] = overall quality
-        teacher_atts[1] = % would take again
-        teacher_atts[2] = level of difficulty
-    """
-
-
-    all_reviews = page_content.find_all('td', attrs={'valign': 'top'})
-    meals = ''
-
-
-    for i in range(0, len(all_reviews)):
-        meals = meals + all_reviews[i].text
-
-    if len(meals) == 0:
-        return
-    """
-    b = meals.split("Lunch")
-    breakfast = b[0]
-    l = b[1].split("Dinner")
-    lunch = l[0]
-    dinner = l[1]
-    ln = dinner.split("Late Night")
-    if len(ln) > 1:
-        lateNight = ln[1]
-        dinner = ln[0]
-        lateNightHappening = True
-
-    breakfast = re.sub(r'\W+', ' ', breakfast)
-    lunch = re.sub(r'\W+', ' ', lunch)
-    dinner = re.sub(r'\W+', ' ', dinner)
-    if lateNightHappening:
-        lateNight = re.sub(r'\W+', ' ', lateNight)
-
-    for s in teacher_reviews:
-        if s in breakfast and s not in breakfastList:
-            breakfastList.append(s)
-
-    for s in teacher_reviews:
-        if s in lunch and s not in lunchList:
-            lunchList.append(s)
-
-    for s in teacher_reviews:
-        if s in dinner and s not in dinnerList:
-            dinnerList.append(s)
-
-    if lateNightHappening:
-        for s in teacher_reviews:
-            if s in lateNight and s not in lateNightList:
-                lateNightList.append(s)
-
-    bf = open("NineTenbreakfast.txt", "w")
-    lun = open("NineTenlunch.txt", "w")
-    din = open("NineTendinner.txt", "w")
-    if lateNightHappening:
-        late = open("NineTenlateNight.txt", "w")
-
-    for i in range(len(breakfastList)):
-        if '&' in breakfastList[i]:
-            breakfastList[i].replace("&", "and")
-        if(i < len(breakfastList) - 1):
-            bf.write(breakfastList[i] + ", ")
-        else:
-            bf.write("and " + breakfastList[i])
-
-    for i in range(len(lunchList)):
-        if '&' in lunchList[i]:
-            lunchList[i].replace("&", "and")
-        if(i < len(lunchList) - 1):
-            lun.write(lunchList[i] + ", ")
-        else:
-            lun.write("and " + lunchList[i])
-
-    for i in range(len(dinnerList)):
-        if '&' in dinnerList[i]:
-            dinnerList[i].replace("&", "and")
-        if(i < len(dinnerList) - 1):
-            din.write(dinnerList[i] + ", ")
-        else:
-            din.write("and " + dinnerList[i])
-
-    if lateNightHappening:
-        for i in range(len(lateNightList)):
-            if '&' in lateNightList[i]:
-                lateNightList[i].replace("&", "and")
-            if(i < len(lateNightList) - 1):
-                late.write(lateNightList[i] + ", ")
-            else:
-                late.write("and " + lateNightList[i])
-
-    bf.close()
-    lun.close()
-    din.close()
-    if lateNightHappening:
-        late.close()
-
-    if not lateNightHappening:
-        filenames = ['NineTenbreakfast.txt', 'NineTenlunch.txt', 'NineTendinner.txt']
-    else:
-        filenames = ['NineTenbreakfast.txt', 'NineTenlunch.txt', 'NineTendinner.txt', 'NineTenlateNight.txt']
-            """
-
 
 
 def main():
-    WilliamPatersonUniversity = RateMyProfScraper(1078)
-    WilliamPatersonUniversity.SearchProfessor("Patrick Tantalo") # will be supplied by website
-    WilliamPatersonUniversity.PrintProfessorDetail("tid")
-    get_teacher_reviews(WilliamPatersonUniversity.PrintProfessorDetail("tid"))
+    UCSC_professor_db = RateMyProfScraper(1078)
+    UCSC_professor_db.SearchProfessor(searchterm) # will be supplied by website
+    UCSC_professor_db.PrintProfessorDetail("tid")
+    get_teacher_reviews(UCSC_professor_db.PrintProfessorDetail("tid"))
 
 if __name__ == "__main__":
     main()
