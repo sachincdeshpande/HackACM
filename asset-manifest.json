@@ -1,15 +1,15 @@
 {
-  "main.css": "/index/static/css/main.d187b5a7.chunk.css",
-  "main.js": "/index/static/js/main.082b8e20.chunk.js",
-  "main.js.map": "/index/static/js/main.082b8e20.chunk.js.map",
-  "runtime~main.js": "/index/static/js/runtime~main.36a4c882.js",
-  "runtime~main.js.map": "/index/static/js/runtime~main.36a4c882.js.map",
-  "static/css/2.c48b4409.chunk.css": "/index/static/css/2.c48b4409.chunk.css",
-  "static/js/2.a456ddd0.chunk.js": "/index/static/js/2.a456ddd0.chunk.js",
-  "static/js/2.a456ddd0.chunk.js.map": "/index/static/js/2.a456ddd0.chunk.js.map",
-  "index.html": "/index/index.html",
-  "precache-manifest.ea3818d30243c8c5b41373717b037779.js": "/index/precache-manifest.ea3818d30243c8c5b41373717b037779.js",
-  "service-worker.js": "/index/service-worker.js",
-  "static/css/2.c48b4409.chunk.css.map": "/index/static/css/2.c48b4409.chunk.css.map",
-  "static/css/main.d187b5a7.chunk.css.map": "/index/static/css/main.d187b5a7.chunk.css.map"
+  "main.css": "/Summarize-My-Professor/static/css/main.d187b5a7.chunk.css",
+  "main.js": "/Summarize-My-Professor/static/js/main.2ffbbbe1.chunk.js",
+  "main.js.map": "/Summarize-My-Professor/static/js/main.2ffbbbe1.chunk.js.map",
+  "runtime~main.js": "/Summarize-My-Professor/static/js/runtime~main.6a7cb728.js",
+  "runtime~main.js.map": "/Summarize-My-Professor/static/js/runtime~main.6a7cb728.js.map",
+  "static/css/2.c48b4409.chunk.css": "/Summarize-My-Professor/static/css/2.c48b4409.chunk.css",
+  "static/js/2.a456ddd0.chunk.js": "/Summarize-My-Professor/static/js/2.a456ddd0.chunk.js",
+  "static/js/2.a456ddd0.chunk.js.map": "/Summarize-My-Professor/static/js/2.a456ddd0.chunk.js.map",
+  "index.html": "/Summarize-My-Professor/index.html",
+  "precache-manifest.7d2911d02995b23d32ef4e14b39522d4.js": "/Summarize-My-Professor/precache-manifest.7d2911d02995b23d32ef4e14b39522d4.js",
+  "service-worker.js": "/Summarize-My-Professor/service-worker.js",
+  "static/css/2.c48b4409.chunk.css.map": "/Summarize-My-Professor/static/css/2.c48b4409.chunk.css.map",
+  "static/css/main.d187b5a7.chunk.css.map": "/Summarize-My-Professor/static/css/main.d187b5a7.chunk.css.map"
 }
