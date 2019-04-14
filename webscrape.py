@@ -1,8 +1,24 @@
-from bs4 import BeautifulSoup
-import re, requests, json, math, cgi
+#!/usr/bin/env
 
-form = cgi.FieldStorage()
-searchterm = form.getvalue('searchbox')
+from bs4 import BeautifulSoup
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from string import punctuation
+from nltk.probability import FreqDist
+from heapq import nlargest
+from collections import defaultdict
+import re, requests, json, math, string
+
+
+
+
+def hello():
+    return "Hello World!"
+
+def run():
+    return "Hello World!"
+
+path = "file:///C:/Users/sachi/Desktop/Past%20Classes/CMPS143/HackACM/cgi-bin/webscrape.py"
 
 class RateMyProfScraper:
         def __init__(self,schoolid):
@@ -103,15 +119,55 @@ def get_teacher_reviews(professor_id):
         attribute_no_space = re.sub(r'\s*$', '', attribute_no_front_space)
         teacher_attributes[i] = attribute_no_space
 
-    print("REVS", teacher_reviews)
-    print("ATTS", teacher_attributes)
+    return teacher_reviews
 
 
 def main():
     UCSC_professor_db = RateMyProfScraper(1078)
-    UCSC_professor_db.SearchProfessor(searchterm) # will be supplied by website
-    UCSC_professor_db.PrintProfessorDetail("tid")
-    get_teacher_reviews(UCSC_professor_db.PrintProfessorDetail("tid"))
+    UCSC_professor_db.SearchProfessor("Ethan Miller")#searchterm) # will be supplied by website
+    test_text = get_teacher_reviews(UCSC_professor_db.PrintProfessorDetail("tid"))
+
+    #
+    sentences, tokens = tokenize_content(test_text)
+    sentence_ranks = score_tokens(tokens, sentences)
+
+    print(summarize(sentence_ranks, sentences, 4))
+
+def tokenize_content(teacher_reviews):
+    stop_words = set(stopwords.words('english') + list(punctuation))
+    tokens_in_teacher_reviews = []
+    sentences = []
+    for sentence in teacher_reviews:
+        sentences.append(sentence)
+        sentence_tokenized = word_tokenize(sentence)
+        for word in sentence_tokenized:
+            if word.lower() not in stop_words:
+                tokens_in_teacher_reviews.append(word)
+    return sentences, tokens_in_teacher_reviews
+
+
+def score_tokens(filt_toks, sentences):
+
+    word_freq = FreqDist(filt_toks)
+
+    ranking = defaultdict(int)
+    i = 0
+
+    for sentence in sentences:
+        for word in word_tokenize(sentence.lower()):
+            if word in word_freq:
+                ranking[i] += word_freq[word]
+        i += 1
+    return ranking
+
+
+def summarize(ranks, sentences, length):
+
+    indexes = nlargest(length, ranks, key=ranks.get)
+    final_sentences = [sentences[j] for j in sorted(indexes)]
+
+    return ' '.join(final_sentences)
+
 
 if __name__ == "__main__":
     main()
