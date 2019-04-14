@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Nameform from './components/form';
+import '@progress/kendo-theme-default/dist/all.css';
+
 
 class App extends Component {
   render() {

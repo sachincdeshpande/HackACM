@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
+import {  DropDownList } from '@progress/kendo-react-dropdowns';
+import { Dropdown } from 'react-bootstrap';
 
-import { DropDownList } from '@progress/kendo-react-dropdowns';
+
 
 
 class NameForm extends Component {
@@ -56,20 +58,28 @@ handleChange = (event) => {
 
   render() {
     return (
+        
         <div>
-            <div className ='Drop'>
-            <DropDownList
-                data={this.prof}
-                textField= 'Name'
-                dataItemKey="Summary"
-                value={this.state.value}
-                onChange={this.handleChange}
-            />
-            </div>
+              <div class = 'row'>
+               <div class = 'col-4 my-col' id='drop'> 
+                  <div className ='Drop'>
+                
+                  <DropDownList
+                      data={this.prof}
+                      textField= 'Name'
+                      dataItemKey="Summary"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                  />
 
-            <div className="example-config">
-                {JSON.stringify(this.state.value.Summary)}
-            </div>
+                  </div>
+                </div>
+                  <div class = 'col-8 my-col'>
+                    <div className="example-config">
+                        {JSON.stringify(this.state.value.Summary)}
+                    </div>
+                  </div>
+                </div>
         </div>
     );
 }
