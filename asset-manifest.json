@@ -1,15 +1,15 @@
 {
-  "main.css": "/Summarize-My-Professor/static/css/main.d187b5a7.chunk.css",
-  "main.js": "/Summarize-My-Professor/static/js/main.2ffbbbe1.chunk.js",
-  "main.js.map": "/Summarize-My-Professor/static/js/main.2ffbbbe1.chunk.js.map",
-  "runtime~main.js": "/Summarize-My-Professor/static/js/runtime~main.6a7cb728.js",
-  "runtime~main.js.map": "/Summarize-My-Professor/static/js/runtime~main.6a7cb728.js.map",
-  "static/css/2.c48b4409.chunk.css": "/Summarize-My-Professor/static/css/2.c48b4409.chunk.css",
-  "static/js/2.a456ddd0.chunk.js": "/Summarize-My-Professor/static/js/2.a456ddd0.chunk.js",
-  "static/js/2.a456ddd0.chunk.js.map": "/Summarize-My-Professor/static/js/2.a456ddd0.chunk.js.map",
-  "index.html": "/Summarize-My-Professor/index.html",
-  "precache-manifest.7d2911d02995b23d32ef4e14b39522d4.js": "/Summarize-My-Professor/precache-manifest.7d2911d02995b23d32ef4e14b39522d4.js",
-  "service-worker.js": "/Summarize-My-Professor/service-worker.js",
-  "static/css/2.c48b4409.chunk.css.map": "/Summarize-My-Professor/static/css/2.c48b4409.chunk.css.map",
-  "static/css/main.d187b5a7.chunk.css.map": "/Summarize-My-Professor/static/css/main.d187b5a7.chunk.css.map"
+  "main.css": "/Summarize-My-Professor/frontend/static/css/main.d187b5a7.chunk.css",
+  "main.js": "/Summarize-My-Professor/frontend/static/js/main.444247e2.chunk.js",
+  "main.js.map": "/Summarize-My-Professor/frontend/static/js/main.444247e2.chunk.js.map",
+  "runtime~main.js": "/Summarize-My-Professor/frontend/static/js/runtime~main.f9b7cb7b.js",
+  "runtime~main.js.map": "/Summarize-My-Professor/frontend/static/js/runtime~main.f9b7cb7b.js.map",
+  "static/css/2.c48b4409.chunk.css": "/Summarize-My-Professor/frontend/static/css/2.c48b4409.chunk.css",
+  "static/js/2.a456ddd0.chunk.js": "/Summarize-My-Professor/frontend/static/js/2.a456ddd0.chunk.js",
+  "static/js/2.a456ddd0.chunk.js.map": "/Summarize-My-Professor/frontend/static/js/2.a456ddd0.chunk.js.map",
+  "index.html": "/Summarize-My-Professor/frontend/index.html",
+  "precache-manifest.e626e349c1bdf967e30a840d7e9c88e2.js": "/Summarize-My-Professor/frontend/precache-manifest.e626e349c1bdf967e30a840d7e9c88e2.js",
+  "service-worker.js": "/Summarize-My-Professor/frontend/service-worker.js",
+  "static/css/2.c48b4409.chunk.css.map": "/Summarize-My-Professor/frontend/static/css/2.c48b4409.chunk.css.map",
+  "static/css/main.d187b5a7.chunk.css.map": "/Summarize-My-Professor/frontend/static/css/main.d187b5a7.chunk.css.map"
 }
