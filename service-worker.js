@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Summarize-My-Professor/frontend/precache-manifest.e626e349c1bdf967e30a840d7e9c88e2.js"
+  "/Summarize-My-Professor/precache-manifest.7d2911d02995b23d32ef4e14b39522d4.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/Summarize-My-Professor/frontend/index.html", {
+workbox.routing.registerNavigationRoute("/Summarize-My-Professor/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
